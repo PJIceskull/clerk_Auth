@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import { Colors } from "@/constants/Colors";
 import { Button } from "react-native-paper";
+import { router, useRouter } from "expo-router";
 
 export default function Index() {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -17,11 +19,19 @@ export default function Index() {
           We are located in the heart of the big city. This is where it all
           happens!
         </Text>
-        <Button mode="contained" style={styles.btn}>
+        <Button
+          mode="contained"
+          style={styles.btn}
+          onPress={() => router.push("/(auth)/sign-in")}
+        >
           <Text style={styles.whiteText}>Sign In</Text>
         </Button>
-        <Button mode="contained" style={styles.btn}>
-          <Text style={styles.whiteText}>Sign Up Today</Text>
+        <Button
+          mode="contained"
+          style={styles.btnRed}
+          onPress={() => router.push("/(auth)/sign-up")}
+        >
+          <Text style={styles.whiteText}>Sign Up Today!</Text>
         </Button>
       </View>
     </View>
@@ -68,6 +78,7 @@ const styles = StyleSheet.create({
   },
   whiteText: {
     color: Colors.whiteSmoke,
+    // fontWeight: "bold",
   },
   btn: {
     padding: 10,
@@ -77,6 +88,9 @@ const styles = StyleSheet.create({
   },
   btnRed: {
     backgroundColor: Colors.Red5,
+    padding: 10,
+    borderRadius: 50,
+    marginTop: 50,
   },
   btnDarkGray: {
     backgroundColor: Colors.darkSlateGray,
